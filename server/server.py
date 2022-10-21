@@ -2,7 +2,12 @@ from flask import Flask, render_template
 import os
 
 template_dir = os.path.abspath('../ui')
-app = Flask(__name__, template_folder=template_dir)
+app = Flask(
+    __name__,
+    template_folder=template_dir,
+    static_url_path='',
+    static_folder='../ui/assets'
+)
 
 
 @app.route("/")
