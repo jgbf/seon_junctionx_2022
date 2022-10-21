@@ -1,0 +1,11 @@
+version: "1.0"
+services:
+  app:
+    build: .
+    ports:
+      - 5001:5001
+    command:
+      - "python3"
+      - "server.py"
+    env_file:
+      - .env
