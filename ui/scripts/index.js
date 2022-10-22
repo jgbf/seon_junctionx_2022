@@ -26,7 +26,13 @@ map.on('load', () => {
     map.addImage(`pulsing-dot-green`, pulsingDotGreen, { pixelRatio: 2 });
     map.addImage(`pulsing-dot-red`, pulsingDotRed, { pixelRatio: 2 });
 
-    addStatisticPoints('facebook')
+    // addStatisticPoints('facebook')
 
     plotTransactions();
 });
+
+map.on('click', (e) => {
+    console.log(e)
+    addStatisticPoints('facebook')
+    map.flyTo({center: [e.lngLat.lng, e.lngLat.lat], zoom:10})
+})
