@@ -26,7 +26,32 @@
           <div id="map"></div>
         </div>
         <div class="main-container">
-          <div id="info"></div>
+          <div id="info">
+            <div id="filter" class="main-bottom">
+                <div class="custom-select">
+                    <select style="{z-index: 5000}">
+                        <option value="all">All Industries</option>
+                        <option value="electronics">electronics</option>
+                        <option value="cars">Automotive</option>
+                        <option value="ecommerce">eCommerce</option>
+                        <option value="food">Food</option>
+                        <option value="medical">Medical</option>
+                    </select>
+                </div>
+                <div class="custom-select">
+                    <select>
+                        <option value="all_users">All Users</option>
+                        <option value="luxury">Luxury</option>
+                        <option value="young">Young</option>
+                        <option value="senior">Senior</option>
+                        <option value="budget">Budget Oriented</option>
+                        <option value="Family">family</option>
+                    </select>
+                </div>
+            </div>
+            <div id="timeline" class="main-bottom">a</div>
+            <div id="ads" class="main-bottom">a</div>
+        </div>
         </div>
       </div>
 
@@ -63,6 +88,8 @@
     const mapboxAccessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
   </script>
   <script src="data/coords.js"></script>
+  <script src="data/first.js"></script>
+  <script src="scripts/add_filtered_data.js"></script>
   <script src="data/connections.js"></script>
   <script src="data/connections_users.js"></script>
   <script src="scripts/pulsing_dot.js"></script>
@@ -73,5 +100,3 @@
 </body>
 
 </html>
-
-<i class="fal color-primary fa-check-square" aria-hidden="true"></i>
