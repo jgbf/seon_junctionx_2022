@@ -1,14 +1,14 @@
 const LAYER_COLORS = {
-    card_hash: '#bd5c11',
-    phone_number: '#c9c610',
-    email_address: '#104ec9',
-    user_address: '#c910a4'
+    card_hash: 'rgba(189, 92, 17, 0.6)',
+    phone_number: 'rgba(201, 198, 16, 0.6)',
+    email_address: 'rgba(16, 78, 201, 0.6)',
+    user_address: 'rgba(201, 16, 164, 0.6)'
 }
 
 const LAYER_OFFSETS = {
     card_hash: 0,
     phone_number: 1,
-    email_address: 2,
+    email_address: 3,
     user_address: -1
 }
 
@@ -20,11 +20,14 @@ const addConnectionLayer = ({ label, data, lineOffset }) => {
             'type': 'geojson',
             data
         },
-        'layout': { 'line-cap': 'round' },
+        'layout': {
+            'line-cap': 'round',
+            visibility: 'none'
+        },
         'paint': {
             'line-color': LAYER_COLORS[label],
-            'line-width': 2,
-            'line-offset': lineOffset
+            'line-width': 3,
+            'line-offset': lineOffset,
         }
     });
 }
@@ -78,6 +81,39 @@ const loadConnections = () => {
     });
 
     Object.keys(data).forEach(label => addConnectionLayer({label, data: data[label], lineOffset: LAYER_OFFSETS[label]}));
+}
+
+const loadUsers = () => {
+    connectionUsers.forEach(({coordinates, user_id}) => {
+        const dot = createDot({ size: 80, color: 'green' });
+        mapConnections.addImage(`user_${user_id}`, dot, { pixelRatio: 2 });
+
+        mapConnections.addSource(`user_${user_id}`, {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': coordinates
+                        }
+                    }
+                ]
+            }
+        });
+    
+        mapConnections.addLayer({
+            'id': `user_${user_id}`,
+            'type': 'symbol',
+            'source': `user_${user_id}`,
+            'layout': {
+                'icon-image': `user_${user_id}`,
+                'icon-allow-overlap': true
+            }
+        });
+    });
 }
 
 const switchLayer = (layerId) => {

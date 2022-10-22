@@ -22,5 +22,13 @@ const connectionUsers = [
         email: 'user2@example.com',
         address: 'Üllői út 131',
         coordinates: [19.0842472, 47.4882343]
+    },
+    {
+        user_id: 4,
+        card_hash: '9c7d04a0d58edce52488c7fd26547e841c7fd1fc6ad5e566ac16b7ed5d222a86',
+        phone: '492347277',
+        email: 'user4@example.com',
+        address: 'Reitter Ferenc u. 66',
+        coordinates: [19.0837985, 47.5320924]
     }
 ]

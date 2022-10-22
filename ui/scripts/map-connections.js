@@ -18,6 +18,7 @@ mapConnections.on('styledata', () => {
 mapConnections.on('load', () => {
     //addConnectionLayer({label: 'phone_number'});
     loadConnections();
+    loadUsers();
 });
 
 mapConnections.on('idle', () => {

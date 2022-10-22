@@ -14,7 +14,7 @@ const plotTransactions = async () => {
             color: Math.random() < 0.2 ? 'red' : 'green'
         });
 
-        await new Promise ((res, rej) => {
+        await new Promise((res, rej) => {
             setTimeout(() => {
                 res();
             }, getRandom(minTime, maxTime));

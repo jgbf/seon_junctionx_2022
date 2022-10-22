@@ -59,22 +59,22 @@
         <div class="main-container">
           <div id="map-filters">
             <label class="form-control">
-              <input id="filter_card_hash" type="checkbox" name="checkbox" onclick="switchLayer('layer_card_hash')"/>
+              <input id="filter_card_hash" class="card_hash" type="checkbox" name="checkbox" onclick="switchLayer('layer_card_hash')"/>
               Card Hash
             </label>
             
             <label class="form-control">
-              <input id="filter_phone_number" type="checkbox" name="checkbox" onclick="switchLayer('layer_phone_number')"/>
+              <input id="filter_phone_number" class="phone_number" type="checkbox" name="checkbox" onclick="switchLayer('layer_phone_number')"/>
               Phone Number
             </label>
 
             <label class="form-control">
-              <input id="filter_user_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_user_address')"/>
+              <input id="filter_user_address" class="user_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_user_address')"/>
               User Address
             </label>
 
             <label class="form-control">
-              <input id="filter_email_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_email_address')"/>
+              <input id="filter_email_address" class="email_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_email_address')"/>
               Email Address
             </label>
           </div>
@@ -93,6 +93,7 @@
   <script src="data/connections.js"></script>
   <script src="data/connections_users.js"></script>
   <script src="scripts/pulsing_dot.js"></script>
+  <script src="scripts/dot.js"></script>
   <script src="scripts/transaction_plot.js"></script>
   <script src="scripts/connection.js"></script>
   <script src="scripts/index.js"></script>

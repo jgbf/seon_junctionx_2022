@@ -72,23 +72,53 @@ body {
 }
 
 input[type="checkbox"] {
-    /* Add if not using autoprefixer */
     -webkit-appearance: none;
     appearance: none;
-    /* For iOS < 15 to remove gradient background */
     background-color: #fff;
-    /* Not removed via appearance */
     margin: 0;
-
     font: inherit;
-    color: currentColor;
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid currentColor;
     border-radius: 0.15em;
     transform: translateY(-0.075em);
     display: grid;
     place-content: center;
+}
+
+input[type="checkbox"].card_hash {
+    color: rgba(189, 92, 17);
+    border: 0.15em solid rgba(189, 92, 17);
+}
+
+input[type="checkbox"].card_hash::before {
+    background-color: rgba(189, 92, 17);
+}
+
+input[type="checkbox"].phone_number {
+    color: rgba(189, 92, 17);
+    border: 0.15em solid rgba(201, 198, 16);
+}
+
+input[type="checkbox"].phone_number::before {
+    background-color: rgba(201, 198, 16);
+}
+
+input[type="checkbox"].email_address {
+    color:  rgba(16, 78, 201);
+    border: 0.15em solid rgba(16, 78, 201);
+}
+
+input[type="checkbox"].email_address::before {
+    background-color: rgba(16, 78, 201);
+}
+
+input[type="checkbox"].user_address {
+    color: rgba(201, 16, 164);
+    border: 0.15em solid rgba(201, 16, 164);
+}
+
+input[type="checkbox"].user_address::before {
+    background-color: rgba(201, 16, 164);
 }
 
 input[type="checkbox"]::before {
@@ -133,88 +163,10 @@ input[type="checkbox"]:checked::before {
 
 #info {
     grid-area: info;
-    display: flex;
 }
 
 #sidebar {
     width: 50px;
     height: 100%;
     background-color: rgb(47 46 50);
-}
-
-.main-bottom {
-    flex: 1;
-    text-align: center;
-    margin: 0px 15px 15px 15px;
-    background-color: #4cc9db;
-}
-
-#filter {
-    justify-content: center;
-    align-items: center;
-    height: 15vh;
-    font-family: sans-serif;
-    padding: 2rem;
-}
-
-
-.custom-select {
-    margin: auto;
-    position: relative;
-    font-family: Arial;
-    width: 250px;
-}
-
-.custom-select select {
-    display: none; /*hide original SELECT element: */
-}
-
-.select-selected {
-    background-color: DodgerBlue;
-    margin: 15px;
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 25px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-    border-color: transparent transparent #fff transparent;
-    top: 7px;
-}
-
-/* style the items (options), including the selected item: */
-.select-items div,.select-selected {
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
-}
-
-/* Style items (options): */
-.select-items {
-    position: absolute;
-    background-color: DodgerBlue;
-    top: 100%;
-    left: 0;
-    right: 0;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-    display: none;
-}
-
-.select-items div:hover, .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
 }
