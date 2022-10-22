@@ -163,10 +163,193 @@ input[type="checkbox"]:checked::before {
 
 #info {
     grid-area: info;
+    display: flex;
 }
 
 #sidebar {
     width: 50px;
     height: 100%;
     background-color: rgb(47 46 50);
+}
+
+.main-bottom {
+    flex: 1;
+    text-align: center;
+    margin: 0px 15px 15px 15px;
+    background-color: #f2f3f7;
+}
+
+#filter {
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 2rem;
+}
+
+
+.custom-select {
+    margin: auto;
+    position: relative;
+    font-family: Arial;
+    width: 250px;
+}
+
+.custom-select select {
+    display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+    background-color: #61bdb2;
+    margin: 15px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: #61bdb2;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#select1 {
+    margin-top: 155px;
+}
+
+#select2 {
+    margin-top: -110px;
+}
+
+canvas#myChart {
+    min-height: 350px;
+
+}
+
+#ads {
+    width: 33%;
+}
+#ads > img {
+    width: 100%;
+    margin: 15px;
+    margin-top: 50px;
+}
+
+a:active {
+    color: #61bdb2;
+}
+
+a:visited {
+    color: #61bdb2;
+}
+
+#ads > a {
+    font-size: 33px;
+    fill: #9C1A1C;
+}
+
+button {
+    background-color: #61bdb2;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    padding: 10px 30px;
+    margin-top: 15px;
+}
+
+.drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+    background: #eee;
+    border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+    color: #222;
+}
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+input[type=file] {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #61bdb2;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #61bdb2;
+}
+
+.socimage {
+    width: 30px;
 }
