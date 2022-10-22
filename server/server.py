@@ -12,7 +12,7 @@ app = Flask(
 
 @app.route("/")
 def hello_world():
-    return render_template('index.html', os.getenv('MAPBOX_ACCESS_TOKEN'))
+    return render_template('index.html', MAPBOX_ACCESS_TOKEN=os.getenv('MAPBOX_ACCESS_TOKEN'))
 
 
 if __name__ == "__main__":
