@@ -21,41 +21,10 @@ map.on('load', () => {
         map.triggerRepaint();
     });
 
-    const pulsingDot = createPulsingDot({ size: 200, duration: 1000 });
-    map.addImage(`pulsing-dot`, pulsingDot, { pixelRatio: 2 });
+    const pulsingDotGreen = createPulsingDot({ size: 70, duration: 1000, color: 'green' });
+    const pulsingDotRed = createPulsingDot({ size: 70, duration: 1000, color: 'red' });
+    map.addImage(`pulsing-dot-green`, pulsingDotGreen, { pixelRatio: 2 });
+    map.addImage(`pulsing-dot-red`, pulsingDotRed, { pixelRatio: 2 });
 
-    const MainCtrl($scope) {
-        $scope.longitude = (Math.random()*360-180).toFixed(8);
-        $scope.latitude = (Math.random()*180-90).toFixed(8);
-    }    
+    plotTransactions();
 });
-
-randomCoordinates = []
-
-addPoint = (id, coords) => {
-    map.addSource(`dot-point_${id}`, {
-        'type': 'geojson',
-        'data': {
-            'type': 'FeatureCollection',
-            'features': [
-                {
-                    'type': 'Feature',
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': coords // icon position [lng, lat]
-                    }
-                }
-            ]
-        }
-    });
-
-    map.addLayer({
-        'id': `layer-pulsing-dot_${id}`,
-        'type': 'symbol',
-        'source': `dot-point_${id}`,
-        'layout': {
-            'icon-image': `pulsing-dot`,
-            'icon-allow-overlap': true
-        }
-    });
-}
