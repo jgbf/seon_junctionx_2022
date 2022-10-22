@@ -23,6 +23,11 @@ body {
     background-color: #f2f3f7;
     padding: 20px;
     gap: 15px;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'map'
+        'info';
 }
 
 .nav-logo {
@@ -35,11 +40,6 @@ body {
     background-color: #fff;
     border-radius: 4px;
     padding: 20px;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-        'map'
-        'info';
 }
 
 #root {
@@ -54,8 +54,9 @@ body {
 
 #map {
     width: 1fr;
-    height: 500px;
-    grid-area: map
+    height: 100%;
+    grid-area: map;
+    border-radius: 4px;
 }
 
 #info {
