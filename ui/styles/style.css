@@ -146,13 +146,12 @@ input[type="checkbox"]:checked::before {
     flex: 1;
     text-align: center;
     margin: 0px 15px 15px 15px;
-    background-color: #4cc9db;
+    background-color: #f2f3f7;
 }
 
 #filter {
     justify-content: center;
     align-items: center;
-    height: 15vh;
     font-family: sans-serif;
     padding: 2rem;
 }
@@ -170,7 +169,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .select-selected {
-    background-color: DodgerBlue;
+    background-color: #61bdb2;
     margin: 15px;
 }
 
@@ -204,7 +203,7 @@ input[type="checkbox"]:checked::before {
 /* Style items (options): */
 .select-items {
     position: absolute;
-    background-color: DodgerBlue;
+    background-color: #61bdb2;
     top: 100%;
     left: 0;
     right: 0;
@@ -217,4 +216,48 @@ input[type="checkbox"]:checked::before {
 
 .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+#select1 {
+    margin-top: 155px;
+}
+
+#select2 {
+    margin-top: -110px;
+}
+
+canvas#myChart {
+    min-height: 350px;
+
+}
+
+#ads {
+    width: 33%;
+}
+#ads > img {
+    width: 100%;
+    margin: 15px;
+    margin-top: 50px;
+}
+
+a:active {
+    color: #61bdb2;
+}
+
+a:visited {
+    color: #61bdb2;
+}
+
+#ads > a {
+    font-size: 33px;
+    fill: #9C1A1C;
+}
+
+button {
+    background-color: #61bdb2;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    padding: 10px 30px;
+    margin-top: 15px;
 }
