@@ -319,3 +319,7 @@ input[type=file]::file-selector-button {
 input[type=file]::file-selector-button:hover {
     background: #61bdb2;
 }
+
+.socimage {
+    width: 30px;
+}
