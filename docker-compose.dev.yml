@@ -9,3 +9,6 @@ services:
       - "server.py"
     env_file:
       - .env
+    volumes:
+      - ./server:/server
+      - ./ui:/ui
