@@ -4,14 +4,42 @@ body {
 
 .nav {
     grid-area: nav;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'logo'
+        'menulist';
 }
 
 .menu {
     grid-area: menu;
+    border-bottom: 1px solid rgb(231, 231, 232);
 }
 
 .main {
+    display: grid;
     grid-area: main;
+    background-color: #f2f3f7;
+    padding: 20px;
+    gap: 15px;
+}
+
+.nav-logo {
+    background: url('../assets/logo-sign.svg') center center / 25px no-repeat;
+    border-bottom: 1px solid rgb(77, 76, 82);
+}
+
+.main-container {
+    color: #7c7a85;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'map'
+        'info';
 }
 
 #root {
@@ -25,8 +53,13 @@ body {
 }
 
 #map {
-    width: 1000px;
-    height: 700px;
+    width: 1fr;
+    height: 500px;
+    grid-area: map
+}
+
+#info {
+    grid-area: info;
 }
 
 #sidebar {
