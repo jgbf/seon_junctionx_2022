@@ -6,7 +6,7 @@ app = Flask(
     __name__,
     template_folder=template_dir,
     static_url_path='',
-    static_folder='../ui/assets'
+    static_folder='../ui',
 )
 
 
