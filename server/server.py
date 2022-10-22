@@ -14,6 +14,10 @@ app = Flask(
 def hello_world():
     return render_template('index.html', MAPBOX_ACCESS_TOKEN=os.getenv('MAPBOX_ACCESS_TOKEN'))
 
+@app.route("/ads")
+def asd():
+    return render_template('ads.html')
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
