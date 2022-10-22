@@ -1,40 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
-    <title>SEON1</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <div id="root">
-            <nav id="sidebar" class="nav">
-              <div class="nav-logo"></div>
 
-            </nav>
-            <div class="menu">
-            </div>
-            <div class="main">
-              <div class="main-container">
-                <div id="map"></div>
-              </div>
-              <div class="main-container">
-                <div id="info"></div>
-              </div>
-            </div>
-        </div>   
-    </main>
-    <script type="text/javascript">
-      const mapboxAccessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
-    </script>
-    <script src="data/coords.js"></script>
-    <script src="scripts/pulsing_dot.js"></script>
-    <script src="scripts/transaction_plot.js"></script>
-    <script src="scripts/index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+  <title>SEON1</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <main>
+    <div id="root">
+      <nav id="sidebar" class="nav">
+        <div class="nav-logo"></div>
+      </nav>
+
+      <div class="menu"></div>
+    
+      <div class="main" style="display: none;">
+        <div class="main-container">
+          <div id="map"></div>
+        </div>
+        <div class="main-container">
+          <div id="info"></div>
+        </div>
+      </div>
+
+      <div class="main-connections">
+        <div class="main-container">
+          <div id="map-filters">
+            <label class="form-control">
+              <input id="filter_card_hash" type="checkbox" name="checkbox" onclick="switchLayer('layer_card_hash')"/>
+              Card Hash
+            </label>
+            
+            <label class="form-control">
+              <input id="filter_phone_number" type="checkbox" name="checkbox" onclick="switchLayer('layer_phone_number')"/>
+              Phone Number
+            </label>
+
+            <label class="form-control">
+              <input id="filter_user_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_user_address')"/>
+              User Address
+            </label>
+
+            <label class="form-control">
+              <input id="filter_email_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_email_address')"/>
+              Email Address
+            </label>
+          </div>
+        </div>
+        <div class="main-container">
+          <div id="map-connections"></div>
+        </div>
+      </div>
+  </main>
+  <script type="text/javascript">
+    const mapboxAccessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
+  </script>
+  <script src="data/coords.js"></script>
+  <script src="data/connections.js"></script>
+  <script src="data/connections_users.js"></script>
+  <script src="scripts/pulsing_dot.js"></script>
+  <script src="scripts/transaction_plot.js"></script>
+  <script src="scripts/connection.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/map-connections.js"></script>
+</body>
+
 </html>
+
+<i class="fal color-primary fa-check-square" aria-hidden="true"></i>

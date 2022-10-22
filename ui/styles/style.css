@@ -30,6 +30,19 @@ body {
         'info';
 }
 
+.main-connections {
+    display: grid;
+    grid-area: main;
+    background-color: #f2f3f7;
+    padding: 20px;
+    gap: 15px;
+    grid-template-rows: 50px 50%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'map-filters'
+        'map-connections';
+}
+
 .nav-logo {
     background: url('../assets/logo-sign.svg') center center / 25px no-repeat;
     border-bottom: 1px solid rgb(77, 76, 82);
@@ -41,6 +54,58 @@ body {
     border-radius: 4px;
     padding: 20px;
 }
+
+#map-filters {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 1fr;
+}
+
+.form-control {
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    background-color: CanvasText;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+} 
 
 #root {
     display: grid;
@@ -56,6 +121,13 @@ body {
     width: 1fr;
     height: 100%;
     grid-area: map;
+    border-radius: 4px;
+}
+
+#map-connections {
+    width: 1fr;
+    height: 100%;
+    grid-area: map-connections;
     border-radius: 4px;
 }
 
