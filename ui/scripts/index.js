@@ -26,5 +26,7 @@ map.on('load', () => {
     map.addImage(`pulsing-dot-green`, pulsingDotGreen, { pixelRatio: 2 });
     map.addImage(`pulsing-dot-red`, pulsingDotRed, { pixelRatio: 2 });
 
+    addStatisticPoints('facebook')
+
     plotTransactions();
 });
