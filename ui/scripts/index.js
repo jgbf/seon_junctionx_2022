@@ -24,10 +24,6 @@ map.on('load', () => {
     const pulsingDot = createPulsingDot({ size: 200, duration: 1000 });
     map.addImage(`pulsing-dot`, pulsingDot, { pixelRatio: 2 });
 
-    const MainCtrl($scope) {
-        $scope.longitude = (Math.random()*360-180).toFixed(8);
-        $scope.latitude = (Math.random()*180-90).toFixed(8);
-    }    
 });
 
 randomCoordinates = []
