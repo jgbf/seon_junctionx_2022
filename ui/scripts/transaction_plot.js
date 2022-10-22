@@ -1,8 +1,6 @@
 const plotTransactions = async () => {
     const getRandom = (min, max) => Math.random() * (max - min) + min;
 
-    console.log(coordinates);
-
     const minTime = 100;
     const maxTime = 350;
 
