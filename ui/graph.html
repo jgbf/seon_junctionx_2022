@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <title>SEON1</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <main>
+    <div id="root">
+      <nav id="sidebar" class="nav">
+        <div class="nav-logo"></div>
+        <div class="menulist">
+          <img src="assets/transaction.svg" id="nav-transaction" onclick="navigate('transaction')" />
+          <img src="assets/customer.svg" id="nav-customer" class="active" onclick="navigate('customer')" />
+        </div>
+      </nav>
+
+      <div class="menu">
+      </div>
+
+      <div id="main-customer" class="main-connections">
+        <div class="main-container">
+          <div id="map-filters">
+            <label class="form-control">
+              <input id="filter_card_hash" class="card_hash" type="checkbox" name="checkbox" onclick="switchLayer('layer_card_hash')"/>
+              Card Hash
+            </label>
+            
+            <label class="form-control">
+              <input id="filter_phone_number" class="phone_number" type="checkbox" name="checkbox" onclick="switchLayer('layer_phone_number')"/>
+              Phone Number
+            </label>
+
+            <label class="form-control">
+              <input id="filter_user_address" class="user_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_user_address')"/>
+              User Address
+            </label>
+
+            <label class="form-control">
+              <input id="filter_email_address" class="email_address" type="checkbox" name="checkbox" onclick="switchLayer('layer_email_address')"/>
+              Email Address
+            </label>
+          </div>
+        </div>
+        <div class="main-container">
+          <div id="map-connections"></div>
+        </div>
+        <div class="main-container">
+          <div id="connection-graph">
+            <svg id="graph"></svg>
+          </div>
+        </div>
+      </div>
+  </main>
+  <script type="text/javascript">
+    const mapboxAccessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
+  </script>
+  <script src="scripts/navigate.js"></script>
+  <script src="data/coords.js"></script>
+  <script src="data/first.js"></script>
+  <script src="scripts/add_filtered_data.js"></script>
+  <script src="data/connections.js"></script>
+  <script src="data/connections_users.js"></script>
+  <script src="scripts/pulsing_dot.js"></script>
+  <script src="scripts/dot.js"></script>
+  <script src="scripts/transaction_plot.js"></script>
+  <script src="scripts/connection.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/map-connections.js"></script>
+  <script src="scripts/chart.js"></script>
+  <script src="scripts/graph.js"></script>
+  <script src="scripts/element_selector.js"></script>
+  <script src="scripts/change_platform.js"></script>
+</body>
+
+</html>

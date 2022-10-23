@@ -18,6 +18,9 @@ def hello_world():
 def asd():
     return render_template('ads.html')
 
+@app.route('/graph')
+def graph():
+    return render_template('graph.html', MAPBOX_ACCESS_TOKEN=os.getenv('MAPBOX_ACCESS_TOKEN'))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
