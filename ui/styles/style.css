@@ -249,10 +249,14 @@ input[type="checkbox"]:checked::before {
 }
 
 #select1 {
-    margin-top: 155px;
+    margin-top: 180px;
 }
 
 #select2 {
+    margin-top: -110px;
+}
+
+#select3 {
     margin-top: -110px;
 }
 
