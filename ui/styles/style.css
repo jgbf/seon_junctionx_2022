@@ -12,6 +12,30 @@ body {
         'menulist';
 }
 
+.menulist {
+    grid-area: menulist;
+    display: grid;
+    grid-template-rows: 50px 50px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'transactions'
+        'customers';
+}
+
+.menulist > img {
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    filter: invert(53%) sepia(6%) saturate(530%) hue-rotate(215deg) brightness(90%) contrast(85%);
+}
+
+.menulist > img.active {
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    filter: invert(99%) sepia(0%) saturate(4979%) hue-rotate(106deg) brightness(116%) contrast(100%);
+}
+
 .menu {
     grid-area: menu;
     border-bottom: 1px solid rgb(231, 231, 232);
@@ -272,10 +296,14 @@ input[type="checkbox"]:checked::before {
 }
 
 #select1 {
-    margin-top: 155px;
+    margin-top: 180px;
 }
 
 #select2 {
+    margin-top: -110px;
+}
+
+#select3 {
     margin-top: -110px;
 }
 
@@ -385,4 +413,42 @@ input[type=file]::file-selector-button:hover {
     left: 0;
     width: 0;
     height: 0;
-    }
+}
+
+#platformselector {
+    width: 328px;;
+    margin: auto;
+}
+
+#simages {
+    display: flex;
+}
+
+img.socimage {
+    margin: auto;
+    cursor: pointer;
+}
+
+#szoveg {
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.slider {
+    width: 328px;
+}
+
+#monthszoveg {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+#btnsht {
+    width: 240px;
+    margin: auto;
+}

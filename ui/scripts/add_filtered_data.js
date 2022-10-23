@@ -1,16 +1,10 @@
-const addStatisticPoints = (witch) => {
-    map.addSource('facebook', {
-        type: 'geojson',
-        data: firstJson,
-        cluster: true,
-        clusterRadius: 30 // Radius of each cluster when clustering points (defaults to 50)
-    });
-
+const addStatisticPoints = (witch, visibility) => {
     map.addLayer({
-        id: 'clusters',
+        id: witch,
         type: 'circle',
         source: 'facebook',
         filter: ['has', witch],
+        visibility: visibility,
         paint: {
             'circle-color': [
                 'step',
@@ -34,9 +28,10 @@ const addStatisticPoints = (witch) => {
     });
 
     map.addLayer({
-        id: 'cluster-count',
+        id: `${witch}-text`,
         type: 'symbol',
         source: 'facebook',
+        visibility: visibility,
         filter: ['has', witch],
         layout: {
             'text-field': `{${witch}}`,

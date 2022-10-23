@@ -19,11 +19,16 @@
     <div id="root">
       <nav id="sidebar" class="nav">
         <div class="nav-logo"></div>
+        <div class="menulist">
+          <img src="assets/transaction.svg" id="nav-transaction" class="active" onclick="navigate('transaction')" />
+          <img src="assets/customer.svg" id="nav-customer" onclick="navigate('customer')" />
+        </div>
       </nav>
 
-      <div class="menu"></div>
+      <div class="menu">
+      </div>
     
-      <div class="main"  style="display: none;">
+      <div id="main-transaction" class="main">
         <div class="main-container">
           <div id="map"></div>
         </div>
@@ -50,6 +55,15 @@
                         <option value="Family">family</option>
                     </select>
                 </div>
+                <div class="custom-select" id="select3">
+                    <select>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="netflix">Netflix</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="github">GitHub</option>
+                    </select>
+                </div>
             </div>
             <div id="timeline" class="main-bottom">
                 <canvas id="myChart"></canvas>
@@ -62,7 +76,7 @@
         </div>
       </div>
 
-      <div class="main-connections">
+      <div id="main-customer" class="main-connections" style="display: none;">
         <div class="main-container">
           <div id="map-filters">
             <label class="form-control">
@@ -99,6 +113,7 @@
   <script type="text/javascript">
     const mapboxAccessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
   </script>
+  <script src="scripts/navigate.js"></script>
   <script src="data/coords.js"></script>
   <script src="data/first.js"></script>
   <script src="scripts/add_filtered_data.js"></script>
@@ -112,6 +127,8 @@
   <script src="scripts/map-connections.js"></script>
   <script src="scripts/chart.js"></script>
   <script src="scripts/graph.js"></script>
+  <script src="scripts/element_selector.js"></script>
+  <script src="scripts/change_platform.js"></script>
 </body>
 
 </html>
