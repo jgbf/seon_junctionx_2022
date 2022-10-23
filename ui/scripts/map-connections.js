@@ -162,17 +162,24 @@ mapConnections.on('load', () => {
                     data.nodes.push(nodeAsd);
                 }
 
-                data.links.push({
-                    source: nodeAsd.id,
-                    target: data.nodes.find(n => n.originalId && n.originalId === feature.properties.sourceUserId).id,
-                    distance: 100
-                });
+                const targetCustomer = data.nodes.find(n => n.originalId && n.originalId === feature.properties.targetUserId);
+                const sourceCustomer = data.nodes.find(n => n.originalId && n.originalId === feature.properties.sourceUserId);
+                const target = targetCustomer && targetCustomer.id;
+                const source = sourceCustomer && sourceCustomer.id;
+                console.log(target, source)
+                if (!isNaN(target) && !isNaN(source)) {
+                    data.links.push({
+                        source: nodeAsd.id,
+                        target: target,
+                        distance: 100
+                    });
 
-                data.links.push({
-                    source: nodeAsd.id,
-                    target: data.nodes.find(n => n.originalId && n.originalId === feature.properties.targetUserId).id,
-                    distance: 100
-                });
+                    data.links.push({
+                        source: nodeAsd.id,
+                        target: source,
+                        distance: 100
+                    });
+                }
             });
             console.log({data})
 
