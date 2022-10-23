@@ -32,9 +32,14 @@ const addConnectionLayer = ({ label, data, lineOffset }) => {
     });
 }
 
-const createLineStringFeature = ({coords}) => ({
+const createLineStringFeature = ({label, coords, value, sourceUserId, targetUserId}) => ({
     'type': 'Feature',
     'properties': {
+        label,
+        coords,
+        value,
+        sourceUserId,
+        targetUserId
     },
     'geometry': {
         'type': 'LineString',
@@ -70,50 +75,54 @@ const loadConnections = () => {
         }
     }
 
-    connectionEdges.forEach(({ label, coords }) => {
-        /* if (!document.getElementById(`layer_${label}`)) {
-            addConnectionLayer({ label, data: data[label] });
-        } else {
-            features[label].features.geometry.coordinates.push(createLineStringFeature(coords));
-            mapConnections.getSource(`layer_${label}`).setData(data[label]);
-        } */
-        data[label].features.push(createLineStringFeature({coords }));
+    connectionEdges.forEach(({ label, coords, value, sourceUserId, targetUserId }) => {
+        data[label].features.push(createLineStringFeature({ label, coords, value, sourceUserId, targetUserId }));
     });
 
     Object.keys(data).forEach(label => addConnectionLayer({label, data: data[label], lineOffset: LAYER_OFFSETS[label]}));
 }
 
 const loadUsers = () => {
-    connectionUsers.forEach(({coordinates, user_id}) => {
-        const dot = createDot({ size: 80, color: 'green' });
-        mapConnections.addImage(`user_${user_id}`, dot, { pixelRatio: 2 });
+    const features = [];
+    connectionUsers.forEach(({coordinates, user_id, card_hash, email, phone, address}) => {
+        features.push({
+            id: user_id,
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': coordinates
+            },
+            properties: {
+                userId: user_id,
+                coordinates,
+                card_hash,
+                email,
+                phone,
+                address
+            }
+        });
+    });
 
-        mapConnections.addSource(`user_${user_id}`, {
+    const dot = createDot({ size: 80, color: 'green' });
+        mapConnections.addImage(`user`, dot, { pixelRatio: 2 });
+
+        mapConnections.addSource(`user`, {
             'type': 'geojson',
             'data': {
                 'type': 'FeatureCollection',
-                'features': [
-                    {
-                        'type': 'Feature',
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': coordinates
-                        }
-                    }
-                ]
+                'features': features
             }
         });
     
         mapConnections.addLayer({
-            'id': `user_${user_id}`,
+            'id': `user`,
             'type': 'symbol',
-            'source': `user_${user_id}`,
+            'source': `user`,
             'layout': {
-                'icon-image': `user_${user_id}`,
+                'icon-image': `user`,
                 'icon-allow-overlap': true
             }
         });
-    });
 }
 
 const switchLayer = (layerId) => {

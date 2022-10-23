@@ -36,11 +36,12 @@ body {
     background-color: #f2f3f7;
     padding: 20px;
     gap: 15px;
-    grid-template-rows: 50px 50%;
+    grid-template-rows: 50px 40% min-content;
     grid-template-columns: 1fr;
     grid-template-areas:
         'map-filters'
-        'map-connections';
+        'map-connections'
+        'connection-graph';
 }
 
 .nav-logo {
@@ -159,6 +160,28 @@ input[type="checkbox"]:checked::before {
     height: 100%;
     grid-area: map-connections;
     border-radius: 4px;
+}
+
+#connection-graph {
+    grid-area: connection-graph;
+}
+
+#graph {
+    display: block;
+    margin: 0 auto;
+    width: 960px;
+    height: 400px;
+}
+
+.links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+}
+  
+.nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+
 }
 
 #info {
@@ -353,3 +376,13 @@ input[type=file]::file-selector-button:hover {
 .socimage {
     width: 30px;
 }
+
+.boxdraw {
+    background: rgba(56, 135, 190, 0.1);
+    border: 2px solid #3887be;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    }

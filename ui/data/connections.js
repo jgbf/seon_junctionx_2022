@@ -5,8 +5,9 @@ const connectionEdges = [
         coords: [
             [19.0565597, 47.4995792],
             [19.0439409, 47.4772062],
-        ]
-
+        ],
+        sourceUserId: 1,
+        targetUserId: 2,
     },
     {
         label: 'card_hash',
@@ -14,8 +15,9 @@ const connectionEdges = [
         coords: [
             [19.0439409, 47.4772062],
             [19.0842472, 47.4882343],
-        ]
-
+        ],
+        sourceUserId: 2,
+        targetUserId: 3,
     },
     {
         label: 'card_hash',
@@ -24,7 +26,9 @@ const connectionEdges = [
             [19.0565597, 47.4995792],
             [19.0842472, 47.4882343],
         ]
-
+        ,
+        sourceUserId: 1,
+        targetUserId: 3,
     },
     {
         label: 'phone_number',
@@ -32,7 +36,9 @@ const connectionEdges = [
         coords: [
             [19.0565597, 47.4995792],
             [19.0439409, 47.4772062]
-        ]
+        ],
+        sourceUserId: 1,
+        targetUserId: 2,
     },
     {
         label: 'email_address',
@@ -40,7 +46,9 @@ const connectionEdges = [
         coords: [
             [19.0439409, 47.4772062],
             [19.0842472, 47.4882343]
-        ]
+        ],
+        sourceUserId: 2,
+        targetUserId: 3,
     },
     {
         label: 'card_hash',
@@ -48,7 +56,9 @@ const connectionEdges = [
         coords: [
             [19.0837985, 47.5320924],
             [19.0565597, 47.4995792]
-        ]
+        ],
+        sourceUserId: 4,
+        targetUserId: 1,
     },
     {
         label: 'card_hash',
@@ -56,7 +66,9 @@ const connectionEdges = [
         coords: [
             [19.0837985, 47.5320924],
             [19.0439409, 47.4772062]
-        ]
+        ],
+        sourceUserId: 4,
+        targetUserId: 2,
     },
     {
         label: 'card_hash',
@@ -64,7 +76,9 @@ const connectionEdges = [
         coords: [
             [19.0837985, 47.5320924],
             [19.0842472, 47.4882343]
-        ]
+        ],
+        sourceUserId: 4,
+        targetUserId: 3,
     },
 
 ]
