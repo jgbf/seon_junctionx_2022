@@ -353,3 +353,41 @@ input[type=file]::file-selector-button:hover {
 .socimage {
     width: 30px;
 }
+
+#platformselector {
+    width: 328px;;
+    margin: auto;
+}
+
+#simages {
+    display: flex;
+}
+
+img.socimage {
+    margin: auto;
+    cursor: pointer;
+}
+
+#szoveg {
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.slider {
+    width: 328px;
+}
+
+#monthszoveg {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+#btnsht {
+    width: 240px;
+    margin: auto;
+}
