@@ -29,10 +29,22 @@ map.on('load', () => {
     // addStatisticPoints('facebook')
 
     plotTransactions();
+    map.addSource('facebook', {
+        type: 'geojson',
+        data: firstJson,
+        cluster: true,
+        clusterRadius: 30 // Radius of each cluster when clustering points (defaults to 50)
+    });
+    addStatisticPoints('facebook', 'none')
+    addStatisticPoints('instagram', 'none')
+    addStatisticPoints('linkedin', 'none')
+    addStatisticPoints('netflix', 'none')
+    addStatisticPoints('github', 'none')
+    hide_all_stat()
 });
 
 map.on('click', (e) => {
-    console.log(e)
-    addStatisticPoints('facebook')
+    change()
     map.flyTo({center: [e.lngLat.lng, e.lngLat.lat], zoom:10})
+
 })
