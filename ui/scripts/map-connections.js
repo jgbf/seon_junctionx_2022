@@ -19,10 +19,8 @@ mapConnections.on('styledata', () => {
 
 mapConnections.on('load', () => {
     //addConnectionLayer({label: 'phone_number'});
-    loadConnections();
-    loadUsers();
-
-    //createGraph(dataa);
+    const idFrom = loadConnections();
+    loadUsers(idFrom);
 
     const canvas = mapConnections.getCanvasContainer();
 
@@ -100,7 +98,7 @@ mapConnections.on('load', () => {
         if (e.keyCode === 27) finish();
     }
 
-    function finish(bbox) {
+    const finish = (bbox) => {
         const LAYER_COLORS = {
             card_hash: 'rgba(189, 92, 17)',
             phone_number: 'rgba(201, 198, 16)',
@@ -123,6 +121,9 @@ mapConnections.on('load', () => {
             const features = mapConnections.queryRenderedFeatures(bbox, {
                 layers: [
                     'layer_card_hash',
+                    'layer_phone_number',
+                    'layer_email_address',
+                    'layer_user_address',
                     'user'
                 ]
             });
@@ -134,50 +135,51 @@ mapConnections.on('load', () => {
             // Run through the selected features and set a filter
             // to match features with unique FIPS codes to activate
             // the `counties-highlighted` layer.
-            const data = {
+            let data = {
                 nodes: [],
                 links: []
             }
-            const usedLayers = new Set();
-            const nodes = {}
-            features.map((feature, i) => {
-                console.log(feature)
-                if (feature.layer.id === 'user') {
-                    data.nodes.push({
-                        id: i,
-                        color: 'rgba(96, 189, 178)'
-                    });
-                    nodes[i] = {
-                        userId: feature.properties.userId
-                    }
-                } else {
-                    if (!usedLayers.has(feature.layer.id)) {
-                        data.nodes.push({
-                            id: i,
-                            color: LAYER_COLORS[feature.properties.label]
-                        });
+            console.log({features})
 
-                        nodes[i] = {
-                            id: feature.properties.value
-                        }
-
-                        usedLayers.add(feature.layer.id);
-                    }
-
-                    data.links.push({
-                        //source: nodes[Object.entries(nodes).find(([key, value]) => value.id === feature.properties.value)[0]],
-                        //target: nodes[Object.entries(nodes).find(([key, value]) => value.userId === feature.properties.targetUserId)[0]],
-                        distance: 100
-                    });
-                }
+            features.filter(f => f.layer.id === 'user').forEach((feature, i) => {
+                data.nodes.push({
+                    id: feature.id,
+                    color: 'rgba(96, 189, 178)',
+                    originalId: feature.properties.userId,
+                });
             });
 
-            //console.log({data,nodes})
+            const userNodeCount = data.nodes.length;
+            features.filter(f => f.layer.id !== 'user').forEach((feature, i) => {
+                let nodeAsd = data.nodes.find(n => n.label === feature.properties.label && n.value === feature.properties.value);
+                if (!nodeAsd) {
+                    nodeAsd = {
+                        id: feature.id + userNodeCount + 1,
+                        color: LAYER_COLORS[feature.properties.label],
+                        label: feature.properties.label,
+                        value: feature.properties.value
+                    }
+                    data.nodes.push(nodeAsd);
+                }
 
-            //refreshGraph(data);
+                data.links.push({
+                    source: nodeAsd.id,
+                    target: data.nodes.find(n => n.originalId && n.originalId === feature.properties.sourceUserId).id,
+                    distance: 100
+                });
+
+                data.links.push({
+                    source: nodeAsd.id,
+                    target: data.nodes.find(n => n.originalId && n.originalId === feature.properties.targetUserId).id,
+                    distance: 100
+                });
+            });
+            console.log({data})
+
+            refreshGraph(JSON.parse(JSON.stringify(data)));
         }
 
-        createGraph(dataa)
+        //refreshGraph(dataa)
 
         mapConnections.dragPan.enable();
     }

@@ -82,7 +82,7 @@ body {
 
 #map-filters {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 24% 24% 24% 24% 50px;
     grid-template-rows: 1fr;
 }
 
@@ -452,3 +452,10 @@ img.socimage {
     width: 240px;
     margin: auto;
 }
+ .tooltip {
+     font-family: system-ui, sans-serif;
+     font-size: 10px;
+     font-style: italic;
+     margin: 0;
+     padding: 0;
+ }

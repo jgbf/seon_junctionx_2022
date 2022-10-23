@@ -174,9 +174,6 @@ const createGraph = data => {
 }
 
 const refreshGraph = data => {
-    d3.select('#graph > *').remove();
-   /*  const svg = document.createElement('svg');
-    svg.setAttribute('id', 'graph');
-    docum ent.getElementById('connection-graph').appendChild(svg);*/
+    d3.selectAll('#graph > *').remove();
     createGraph(data);
 }

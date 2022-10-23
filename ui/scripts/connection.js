@@ -32,7 +32,8 @@ const addConnectionLayer = ({ label, data, lineOffset }) => {
     });
 }
 
-const createLineStringFeature = ({label, coords, value, sourceUserId, targetUserId}) => ({
+const createLineStringFeature = ({ id, label, coords, value, sourceUserId, targetUserId }) => ({
+    id,
     'type': 'Feature',
     'properties': {
         label,
@@ -48,6 +49,7 @@ const createLineStringFeature = ({label, coords, value, sourceUserId, targetUser
 });
 
 const loadConnections = () => {
+    let dataCount = 0;
     const data = {
         card_hash: {
             'type': 'FeatureCollection',
@@ -75,18 +77,24 @@ const loadConnections = () => {
         }
     }
 
-    connectionEdges.forEach(({ label, coords, value, sourceUserId, targetUserId }) => {
-        data[label].features.push(createLineStringFeature({ label, coords, value, sourceUserId, targetUserId }));
+    connectionEdges.forEach(({ label, coords, value, sourceUserId, targetUserId }, i) => {
+        data[label].features.push(createLineStringFeature({ id: i, label, coords, value, sourceUserId, targetUserId }));
     });
 
-    Object.keys(data).forEach(label => addConnectionLayer({label, data: data[label], lineOffset: LAYER_OFFSETS[label]}));
+    Object.keys(data).forEach(label => {
+        addConnectionLayer({ label, data: data[label], lineOffset: LAYER_OFFSETS[label] });
+        dataCount += data[label].features.length;
+    });
+
+    return dataCount;
 }
 
-const loadUsers = () => {
+const loadUsers = (idFrom) => {
     const features = [];
-    connectionUsers.forEach(({coordinates, user_id, card_hash, email, phone, address}) => {
+    connectionUsers.forEach(({ coordinates, user_id, card_hash, email, phone, address }, i) => {
+        console.log(idFrom, i)
         features.push({
-            id: user_id,
+            id: i,
             'type': 'Feature',
             'geometry': {
                 'type': 'Point',
@@ -104,25 +112,27 @@ const loadUsers = () => {
     });
 
     const dot = createDot({ size: 80, color: 'green' });
-        mapConnections.addImage(`user`, dot, { pixelRatio: 2 });
+    mapConnections.addImage(`user`, dot, { pixelRatio: 2 });
 
-        mapConnections.addSource(`user`, {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': features
-            }
-        });
-    
-        mapConnections.addLayer({
-            'id': `user`,
-            'type': 'symbol',
-            'source': `user`,
-            'layout': {
-                'icon-image': `user`,
-                'icon-allow-overlap': true
-            }
-        });
+    mapConnections.addSource(`user`, {
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': features
+        }
+    });
+
+    mapConnections.addLayer({
+        'id': `user`,
+        'type': 'symbol',
+        'source': `user`,
+        'layout': {
+            'icon-image': `user`,
+            'icon-allow-overlap': true
+        }
+    });
+
+    return features.length;
 }
 
 const switchLayer = (layerId) => {
